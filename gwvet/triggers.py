@@ -24,7 +24,6 @@ import re
 
 __author__ = 'Duncan Macleod <duncan.macleod@ligo.org>'
 
-from gwpy.table.utils import get_row_value
 from gwpy.segments import DataQualityFlag
 
 from gwsumm import globalv
@@ -61,7 +60,7 @@ def vetoed(table, flag):
         flag = flag.active
     after = table.copy()
     for row in table:
-        if float(get_row_value(row, 'time')) in flag:
+        if float(row['time']) in flag:
             after.append(row)
     return after
 
